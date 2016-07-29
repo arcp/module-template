@@ -9,7 +9,7 @@
 
 return array(
 
-  'rhModule' => 'Recursos Humanos',
+  'menuBug' => 'Bug',
 
- 	'setup' => 'Configuración',
+
 );

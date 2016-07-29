@@ -24,28 +24,28 @@ Route::group(array('middleware' => array('auth', 'check.first.time.access', 'che
 	// Route::controller('/initial-accounting-setup', 'Mgallegos\DecimaAccounting\Accounting\Controllers\SettingManager');
 });
 
-Route::group(array('middleware' => array('auth'), 'prefix' => 'accounting'), function()
+Route::group(array('middleware' => array('auth'), 'prefix' => 'recursos-humanos'), function()
 {
-	Route::group(array('prefix' => '/setup'), function()
+	Route::group(array('prefix' => '/mantenimiento'), function()
 	{
-		Route::get('/template-management/new', function()
+		Route::get('/empleados/new', function()
 		{
-			return Redirect::to('module/setup/template-management')->with('newAccountAction', true);
+			return Redirect::to('recursos-humanos/mantenimiento/empleados')->with('newEmpleadosAction', true);
 		});
 
-		Route::get('/template-management/edit', function()
+		Route::get('/empleados/edit', function()
 		{
-			return Redirect::to('module/setup/template-management')->with('editAccountAction', true);
+			return Redirect::to('recursos-humanos/mantenimiento/empleados')->with('editEmpleadosAction', true);
 		});
 
-		Route::get('/template-management/delete', function()
+		Route::get('/empleados/delete', function()
 		{
-			return Redirect::to('module/setup/template-management')->with('deleteAccountAction', true);
+			return Redirect::to('recursos-humanos/mantenimiento/empleados')->with('deleteEmpleadosAction', true);
 		});
 
 		Route::group(array('middleware' => array('check.first.time.access', 'check.access', 'csrf')), function()
 		{
-			// Route::controller('/template-management', 'Mgallegos\DecimaAccounting\Accounting\Controllers\AccountManager');
+			Route::controller('/empleados', 'Vendor\DecimaModule\Module\Controllers\EmpleadoManager');
 		});
 	});
 });
